@@ -8,7 +8,7 @@ echo "nameserver 8.8.8.8" > $DEST
 # set up hypriot repository
 apt-get update
 
-# set up hypriot rpi repository for Docker packages 
+# set up hypriot rpi repository for Docker packages
 wget -q https://packagecloud.io/gpg.key -O - | apt-key add -
 
 # set up hypriot schatzkiste repository for generic packages
@@ -18,10 +18,9 @@ echo 'deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main' >> /e
 apt-get update
 
 # download kernel and firmware
-for i in 
-linux-dtb-next-sunxi_4.83_armhf.deb linux-firmware-image-next-sunxi_4.83_armhf.deb linux-headers-next-sunxi_4.83_armhf.deb linux-image-next-sunxi_4.83_armhf.deb linux-u-boot-next-bananapi_4.83_armhf.deb; 
+for i in linux-dtb-next-sunxi_4.83_armhf.deb linux-firmware-image-next-sunxi_4.83_armhf.deb linux-headers-next-sunxi_4.83_armhf.deb linux-image-next-sunxi_4.83_armhf.deb linux-u-boot-next-bananapi_4.83_armhf.deb
   do
-  wget https://github.com/hypriot/kernel-builder-bananapi-m1/releases/download/4.83/$i; 
+  wget https://github.com/hypriot/kernel-builder-bananapi-m1/releases/download/4.83/$i
 done
 
 # install kernel- and firmware-packages

@@ -48,7 +48,6 @@ tar xf ${ROOTFS_TAR_PATH} -C ${BUILD_PATH}
 update-binfmts --enable qemu-arm
 
 echo $(ls)
-cp *.deb ${BUILD_PATH}
 
 # set up mount points for the pseudo filesystems
 mkdir -p ${BUILD_PATH}/{proc,sys,dev/pts}
