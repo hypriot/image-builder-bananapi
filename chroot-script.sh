@@ -6,18 +6,16 @@ mkdir -p $(dirname $DEST)
 echo "nameserver 8.8.8.8" > $DEST
 
 # set up hypriot repository
-# and install RPi kernel and firmware
-#apt-get update
+apt-get update
 
-# set up hypriot rpi repository for rpi specific kernel- and firmware-packages
-# wget -q https://packagecloud.io/gpg.key -O - | apt-key add -
-# echo 'deb https://packagecloud.io/Hypriot/rpi/debian/ jessie main' > /etc/apt/sources.list.d/hypriot.list
+# set up hypriot rpi repository for Docker packages 
+wget -q https://packagecloud.io/gpg.key -O - | apt-key add -
 
 # set up hypriot schatzkiste repository for generic packages
-# echo 'deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main' >> /etc/apt/sources.list.d/hypriot.list
+echo 'deb https://packagecloud.io/Hypriot/Schatzkiste/debian/ wheezy main' >> /etc/apt/sources.list.d/hypriot.list
 
 # reload package sources
-# apt-get update
+apt-get update
 
 # download kernel and firmware
 for i in 
@@ -29,9 +27,6 @@ done
 # install kernel- and firmware-packages
 dpkg -i *.deb
 echo $(ls)
-
-# enable serial console
-# printf "# Spawn a getty on Raspberry Pi serial line\nT0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100\n" >> /etc/inittab
 
 # boot/cmdline.txt
 echo "+dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 cgroup-enable=memory swapaccount=1 elevator=deadline rootwait console=ttyAMA0,115200 kgdboc=ttyAMA0,115200" > /boot/cmdline.txt
