@@ -1,0 +1,49 @@
+FROM ubuntu:trusty
+
+#http://wiki.lemaker.org/BananaPro/Pi:Building_u-boot,_script.bin_and_linux-kernel
+
+#change kernel config
+#cd lemaker-bsp && make linux-config
+
+RUN apt-get update && \
+apt-get install --force-yes --yes --no-install-recommends \
+git \
+wget \
+ca-certificates \
+fakeroot \
+pkg-config \
+build-essential \
+u-boot-tools \
+libusb-1.0-0 \
+libusb-1.0-0-dev \
+libusb-dev \
+libusb++-dev \
+kernel-package \
+zlib1g-dev \
+libncurses5-dev \
+&& apt-get clean
+
+RUN apt-get update && \
+apt-get install --force-yes --yes --no-install-recommends \
+binutils-arm-linux-gnueabihf \
+cpp-arm-linux-gnueabihf \
+g++-arm-linux-gnueabihf \
+gcc-arm-linux-gnueabihf \
+cpp-4.8-arm-linux-gnueabihf \
+g++-4.8-arm-linux-gnueabihf \
+gcc-4.8-arm-linux-gnueabihf \
+gcc-4.8-arm-linux-gnueabihf-base \
+gcc-arm-none-eabi \
+gcc-4.9 \
+gcc-4.9-base \
+&& apt-get clean
+
+
+#Get the BSP repository:
+RUN git clone https://github.com/LeMaker/lemaker-bsp.git
+
+#If for Banana Pro:
+#CMD cd lemaker-bsp && ./configure BananaPro && make
+
+#If for Banana Pi:
+CMD cd lemaker-bsp && ./configure BananaPi && make
