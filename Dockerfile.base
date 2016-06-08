@@ -9,6 +9,7 @@ u-boot-tools \
 kernel-package \
 wget \
 zip \
+unzip \
 ca-certificates \
 fakeroot \
 pkg-config \
