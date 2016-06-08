@@ -55,17 +55,16 @@ git clone --depth 1 https://github.com/LeMaker/lemaker-bsp.git ./lemaker/
 cd lemaker/
 ./configure BananaPi
 make
-ls -lAh .
-ls -lAh out/ || true
-ls -lAh out/BananaPi_hwpack/ || true
+tree -L 2 .
+ls -lAh output/BananaPi_hwpack/ || true
 cd ..
 
 # extract root file system
 tar xf "${ROOTFS_TAR_PATH}" -C "${BUILD_PATH}"
 
 # copy new compiled files to filesystem
-cp -r ${BUILD_RESULT_PATH}/lemaker/out/BananaPi_hwpack/kernel/* ${BUILD_PATH}/boot
-cp -r ${BUILD_RESULT_PATH}/lemaker/out/BananaPi_hwpack/rootfs/* ${BUILD_PATH}
+cp -r ${BUILD_RESULT_PATH}/lemaker/output/BananaPi_hwpack/kernel/* ${BUILD_PATH}/boot
+cp -r ${BUILD_RESULT_PATH}/lemaker/output/BananaPi_hwpack/rootfs/* ${BUILD_PATH}
 
 # modify/add image files directly
 # e.g. root partition resize script
@@ -120,7 +119,7 @@ tar xf filesystem.tar -C ${BUILD_PATH}
 umount ${BUILD_PATH}/boot
 umount ${BUILD_PATH}
 
-dd if="${BUILD_RESULT_PATH}/lemaker/bootloader/u-boot-sunxi-with-spl.bin" of="/${HYPRIOT_IMAGE_NAME}" bs=1MiB seek=8
+dd if="${BUILD_RESULT_PATH}/lemaker/output/bootloader/u-boot-sunxi-with-spl.bin" of="/${HYPRIOT_IMAGE_NAME}" bs=1MiB seek=8
 
 
 # ensure that the travis-ci user can access the sd-card image file
