@@ -1,10 +1,7 @@
 default: build
 
-build-base:
-	docker build -f Dockerfile.base -t image-builder-base .
-
-build: build-base
-	docker build -f Dockerfile.manual -t image-builder-bananapi .
+build:
+	docker build -t image-builder-bananapi .
 
 get-cluster-lab-images:
 	builder/get-cluster-lab-images.sh

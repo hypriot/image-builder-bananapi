@@ -51,6 +51,7 @@ fi
 echo "${ROOTFS_TAR_CHECKSUM} ${ROOTFS_TAR_PATH}" | sha256sum -c -
 
 # configure and build BananaPi
+git clone --depth 1 https://github.com/LeMaker/lemaker-bsp.git ./lemaker/
 cd lemaker/
 ./configure BananaPi
 make

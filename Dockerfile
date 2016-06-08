@@ -36,3 +36,6 @@ libusb-dev \
 libusb++-dev \
 zlib1g-dev \
 libncurses5-dev
+
+WORKDIR /workspace
+CMD ["./builder/build.sh"]
