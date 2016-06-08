@@ -7,10 +7,10 @@ build: build-base
 	docker build -f Dockerfile.manual -t image-builder-bananapi .
 
 sd-image: build
-	docker run --rm --privileged -v $(shell pwd):/workspace -v $(shell pwd)/result:/boot image-builder-bananapi
+	docker run --rm --privileged -v $(shell pwd):/workspace image-builder-bananapi
 
 shell: build
-	docker run -ti --privileged -v $(shell pwd):/workspace -v $(shell pwd)/result:/boot image-builder-bananapi bash
+	docker run -ti --privileged -v $(shell pwd):/workspace image-builder-bananapi bash
 
 tag:
 	git tag ${TAG}
