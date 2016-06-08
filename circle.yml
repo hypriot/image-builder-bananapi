@@ -5,7 +5,7 @@ machine:
 test:
   override:
     - VERSION=${CIRCLE_TAG} make sd-image
-    - cp *.deb $CIRCLE_ARTIFACTS
+    - cp *.zip* $CIRCLE_ARTIFACTS
 
 
 # dependencies:
