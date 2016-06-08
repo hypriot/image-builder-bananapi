@@ -10,6 +10,7 @@ kernel-package \
 wget \
 zip \
 unzip \
+tree \
 ca-certificates \
 fakeroot \
 pkg-config \
