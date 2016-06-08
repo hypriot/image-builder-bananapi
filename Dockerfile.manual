@@ -5,7 +5,7 @@ FROM image-builder-base
 WORKDIR /workspace
 
 #Get the BoardSupportPackage repository:
-RUN git clone --depth 1 https://github.com/LeMaker/lemaker-bsp.git .
+RUN git clone --depth 1 https://github.com/LeMaker/lemaker-bsp.git lemaker/
 
 #change kernel config
 #CMD ["make linux-config"]

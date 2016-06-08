@@ -6,7 +6,10 @@ build-base:
 build: build-base
 	docker build -f Dockerfile.manual -t image-builder-bananapi .
 
-sd-image: build
+get-cluster-lab-images:
+	builder/get-cluster-lab-images.sh
+
+sd-image: get-cluster-lab-images build
 	docker run --rm --privileged -v $(shell pwd):/workspace image-builder-bananapi
 
 shell: build
