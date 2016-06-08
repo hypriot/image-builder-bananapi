@@ -1,13 +1,16 @@
 default: build
 
-build:
-	docker build -t image-builder-rpi .
+build-base:
+	docker build -f Dockerfile.base -t image-builder-base .
+
+build: build-base
+	docker build -f Dockerfile.manual -t image-builder-bananapi .
 
 sd-image: build
-	docker run --rm --privileged -v $(shell pwd):/workspace -v /boot:/boot -v /lib/modules:/lib/modules image-builder-rpi
+	docker run --rm --privileged -v $(shell pwd):/workspace -v $(shell pwd)/result:/boot image-builder-bananapi
 
 shell: build
-	docker run -ti --privileged -v $(shell pwd):/workspace -v /boot:/boot -v /lib/modules:/lib/modules image-builder-rpi bash
+	docker run -ti --privileged -v $(shell pwd):/workspace -v $(shell pwd)/result:/boot image-builder-bananapi bash
 
 tag:
 	git tag ${TAG}
