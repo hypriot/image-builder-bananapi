@@ -8,11 +8,14 @@ build-essential \
 u-boot-tools \
 kernel-package \
 wget \
+zip \
 ca-certificates \
 fakeroot \
 pkg-config \
 ccache \
-build-essential \
+build-essential
+
+RUN apt-get install --yes --no-install-recommends \
 cpp-arm-linux-gnueabihf \
 g++-arm-linux-gnueabihf \
 gcc-arm-linux-gnueabihf \
@@ -23,15 +26,12 @@ g++-4.8-arm-linux-gnueabihf \
 g++-4.8-multilib-arm-linux-gnueabihf \
 cpp-4.8-arm-linux-gnueabihf \
 binutils-arm-linux-gnueabihf \
-gcc-arm-none-eabi \
-&& apt-get clean
+gcc-arm-none-eabi
 
-RUN apt-get update && \
-apt-get install -y \
+RUN apt-get install --yes --no-install-recommends \
 libusb-1.0-0 \
 libusb-1.0-0-dev \
 libusb-dev \
 libusb++-dev \
 zlib1g-dev \
-libncurses5-dev \
-&& apt-get clean
+libncurses5-dev
