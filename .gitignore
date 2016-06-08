@@ -2,3 +2,4 @@
 *.img.zip
 *.tar.gz
 .vagrant/
+out/
