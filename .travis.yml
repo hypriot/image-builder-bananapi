@@ -1,11 +1,12 @@
 sudo: required
 services:
-- docker
+  - docker
 language: bash
 script:
-- make sd-image
+  - VERSION=${TRAVIS_TAG} make sd-image
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: Y8s1OY6X9wYtXJgmUb/f4Gxj8PfWqeIvXVgoKD854H4fTj3TqG/mnu3EUMqx9SDOKjPC+g7xOVjNrmNfHybnv6PEWPfBk+IgrscGNWnT6QxBuY3tSCv1PJ4sWJzYr4nu2nSaOaPqmyGqjatWZ/1Egi9C6v3DihNrA/bu2LICHhDP9I4g3quyIez3Kdyk8gt6iD8UouYyJ3QmpuqPR3ryI5qvW4wnTMZF83kvXdUffOelH0dghokepJHQLVe7eOTxrxpWyT06P+4U3aDrKeaDE6TQziBRTcdLGX5tL9OpAyZ8WtA682ciEfJZ5m7CCjNDO4VFDZnliajmny8+5lYs6X33VDqeNCFnbavxjADqQuXfNJfDL2lrE3DjfUR4kH3OwQVs+E22KGlHLO4Hi3qefHY9qazsy9QUj1GVjSdOpaRAD+Ch6R3yr4aDQ78iYDzwnpSxCYyeZpMNtl5f06BmA4Gt2/tit6e/uBayaCWGEInVisiGsGXl5D1tTV12gSWKRv8HkE4zsbi9FH5+6WKhdcT/6JU2Ku4yvap6Mpm2hH6r1VsyMzOPob6AJ2j2rTlXTowUi1WrhCUrc6edSy2NL8ev07taCEfvm7fpU/2ORC2W09F+9ahYLXZmZVFqY4XCv7kSygVRNn1AwmTUmSFA8CTFyDY5oFo3LdQo0EqZ+W4=
   file:

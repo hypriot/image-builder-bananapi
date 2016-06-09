@@ -131,6 +131,9 @@ umask 0000
 zip "${BUILD_RESULT_PATH}/${HYPRIOT_IMAGE_NAME}.zip" "/${HYPRIOT_IMAGE_NAME}"
 cd ${BUILD_RESULT_PATH} && sha256sum "${HYPRIOT_IMAGE_NAME}.zip" > "${HYPRIOT_IMAGE_NAME}.zip.sha256" && cd -
 
+tree -L 2 .
+tree -L 2 ${BUILD_RESULT_PATH}
+
 exit 0
 # test sd-image that we have built
 VERSION=${HYPRIOT_IMAGE_VERSION} rspec --format documentation --color ${BUILD_RESULT_PATH}/builder/test
