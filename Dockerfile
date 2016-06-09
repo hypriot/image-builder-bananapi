@@ -38,5 +38,10 @@ libusb++-dev \
 zlib1g-dev \
 libncurses5-dev
 
+RUN apt-get install --yes --no-install-recommends \
+binfmt-support \
+qemu \
+qemu-user-static
+
 WORKDIR /workspace
 CMD ["./builder/build.sh"]
