@@ -15,7 +15,11 @@ ca-certificates \
 fakeroot \
 pkg-config \
 ccache \
-build-essential
+ruby \
+ruby-dev \
+pigz \
+awscli \
+shellcheck \
 
 RUN apt-get install --yes --no-install-recommends \
 cpp-arm-linux-gnueabihf \
