@@ -19,7 +19,7 @@ ruby \
 ruby-dev \
 pigz \
 awscli \
-shellcheck \
+shellcheck
 
 RUN apt-get install --yes --no-install-recommends \
 cpp-arm-linux-gnueabihf \
