@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 
-RUN apt-get update && \
-apt-get install --force-yes --yes --no-install-recommends \
+RUN apt-get update -qq && \
+apt-get install -qq --force-yes --yes --no-install-recommends \
 git \
 make \
 build-essential \
@@ -21,7 +21,7 @@ pigz \
 awscli
 #shellcheck
 
-RUN apt-get install --yes --no-install-recommends \
+RUN apt-get install -qq --yes --no-install-recommends \
 cpp-arm-linux-gnueabihf \
 g++-arm-linux-gnueabihf \
 gcc-arm-linux-gnueabihf \
@@ -34,7 +34,7 @@ cpp-4.8-arm-linux-gnueabihf \
 binutils-arm-linux-gnueabihf \
 gcc-arm-none-eabi
 
-RUN apt-get install --yes --no-install-recommends \
+RUN apt-get install -qq --yes --no-install-recommends \
 libusb-1.0-0 \
 libusb-1.0-0-dev \
 libusb-dev \
@@ -42,7 +42,7 @@ libusb++-dev \
 zlib1g-dev \
 libncurses5-dev
 
-RUN apt-get install --yes --no-install-recommends \
+RUN apt-get install -qq --yes --no-install-recommends \
 binfmt-support \
 qemu \
 qemu-user-static
