@@ -69,7 +69,7 @@ cp -r ${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/rootfs/* ${BUILD_PATH}
 
 # modify/add image files directly
 # e.g. root partition resize script
-cp -R /builder/files/* ${BUILD_PATH}/
+cp -R ${BUILD_RESULT_PATH}/builder/files/* ${BUILD_PATH}/
 
 echo "
 bootargs=console=ttyS0,115200 disp.screen0_output_mode=EDID:1024x768p50 hdmi.audio=EDID:0 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
@@ -114,7 +114,7 @@ BOOT_PARTITION_OFFSET=$(fdisk -l /${HYPRIOT_IMAGE_NAME} | grep ${HYPRIOT_IMAGE_N
 
 mount -t ext4 -o loop=/dev/loop0,offset=$((ROOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}
 mkdir ${BUILD_PATH}/boot
-mount -t msdos -o loop=/dev/loop1,offset=$((BOOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}/boot
+mount -t vfat -o loop=/dev/loop1,offset=$((BOOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}/boot
 
 tar xf filesystem.tar -C ${BUILD_PATH}
 
@@ -122,7 +122,6 @@ umount ${BUILD_PATH}/boot
 umount ${BUILD_PATH}
 
 dd if="${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/bootloader/u-boot-sunxi-with-spl.bin" of="/${HYPRIOT_IMAGE_NAME}" bs=1MiB seek=8
-
 
 # ensure that the travis-ci user can access the sd-card image file
 umask 0000
@@ -132,7 +131,8 @@ zip "${BUILD_RESULT_PATH}/${HYPRIOT_IMAGE_NAME}.zip" "/${HYPRIOT_IMAGE_NAME}"
 cd ${BUILD_RESULT_PATH} && sha256sum "${HYPRIOT_IMAGE_NAME}.zip" > "${HYPRIOT_IMAGE_NAME}.zip.sha256" && cd -
 
 tree -L 2 .
-tree -L 2 ${BUILD_RESULT_PATH}
+tree -L 2 ${BUILD_PATH}
+ls -lAh .
 
 exit 0
 # test sd-image that we have built
