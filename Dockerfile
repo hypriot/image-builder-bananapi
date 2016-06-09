@@ -18,8 +18,8 @@ ccache \
 ruby \
 ruby-dev \
 pigz \
-awscli \
-shellcheck
+awscli
+#shellcheck
 
 RUN apt-get install --yes --no-install-recommends \
 cpp-arm-linux-gnueabihf \
