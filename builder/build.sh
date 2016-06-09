@@ -53,11 +53,8 @@ echo "${ROOTFS_TAR_CHECKSUM} ${ROOTFS_TAR_PATH}" | sha256sum -c -
 # configure and build BananaPi
 git clone --depth 1 https://github.com/LeMaker/lemaker-bsp.git ./lemaker/
 cd lemaker/
-tree -L 2 .
 ./configure BananaPi
 make
-tree -L 2 .
-ls -lAh output/BananaPi_hwpack/ || true
 cd ..
 
 # extract root file system
