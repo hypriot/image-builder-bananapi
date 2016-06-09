@@ -69,7 +69,7 @@ cp -r ${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/rootfs/* ${BUILD_PATH}
 
 # modify/add image files directly
 # e.g. root partition resize script
-cp -R /builder/files/* ${BUILD_PATH}/
+cp -R builder/files/* ${BUILD_PATH}/
 
 echo "
 bootargs=console=ttyS0,115200 disp.screen0_output_mode=EDID:1024x768p50 hdmi.audio=EDID:0 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
