@@ -20,12 +20,15 @@ BUILD_PATH="/build"
 ROOTFS_TAR="rootfs-armhf-raspbian-${HYPRIOT_OS_VERSION}.tar.gz"
 ROOTFS_TAR_PATH="${BUILD_RESULT_PATH}/${ROOTFS_TAR}"
 
-# Show TRAVSI_TAG in travis builds
+# Show TRAVIS_TAG in travis builds
 echo TRAVIS_TAG="${TRAVIS_TAG}"
+
+# Show CIRCLE_TAG in circleci builds
+echo CIRCLE_TAG="${CIRCLE_TAG}"
 
 # name of the sd-image we gonna create
 HYPRIOT_IMAGE_VERSION=${VERSION:="dirty"}
-HYPRIOT_IMAGE_NAME="hypriotos-rpi-${HYPRIOT_IMAGE_VERSION}.img"
+HYPRIOT_IMAGE_NAME="hypriotos-bananapi-${HYPRIOT_IMAGE_VERSION}.img"
 export HYPRIOT_IMAGE_VERSION
 
 # download the ready-made raw image for the RPi
