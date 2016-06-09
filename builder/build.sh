@@ -112,8 +112,8 @@ tar cf filesystem.tar -C ${BUILD_PATH} .
 ROOT_PARTITION_OFFSET=$(fdisk -l /${HYPRIOT_IMAGE_NAME} | grep ${HYPRIOT_IMAGE_NAME}2 | awk -F " " '{ print $2 }')
 BOOT_PARTITION_OFFSET=$(fdisk -l /${HYPRIOT_IMAGE_NAME} | grep ${HYPRIOT_IMAGE_NAME}1 | awk -F " " '{ print $2 }')
 
-mount -t ext4 -o loop=/dev/loop0,offset=$((ROOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}/root
-mount -t msdos -o loop=/dev/loop1,offset=$((BOOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}/root
+mount -t ext4 -o loop=/dev/loop0,offset=$((ROOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}
+mount -t msdos -o loop=/dev/loop1,offset=$((BOOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}/boot
 
 tar xf filesystem.tar -C ${BUILD_PATH}
 
