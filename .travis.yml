@@ -13,5 +13,5 @@ deploy:
     - hypriotos-bananapi-${TRAVIS_TAG}.img.zip
     - hypriotos-bananapi-${TRAVIS_TAG}.img.zip.sha256
   on:
-    tags: true
+#    tags: true
     repo: hypriot/image-builder-bananapi
