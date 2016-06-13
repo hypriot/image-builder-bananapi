@@ -122,7 +122,7 @@ tar xf "${BUILD_RESULT_PATH}/filesystem.tar" -C "${BUILD_PATH}"
 umount ${BUILD_PATH}/boot
 umount ${BUILD_PATH}
 
-dd if="${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/bootloader/u-boot-sunxi-with-spl.bin" of="/${HYPRIOT_IMAGE_NAME}" bs=1MiB seek=8
+#dd if="${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/bootloader/u-boot-sunxi-with-spl.bin" of="/${HYPRIOT_IMAGE_NAME}" bs=1MiB seek=8
 
 # ensure that the travis-ci user can access the sd-card image file
 umask 0000
