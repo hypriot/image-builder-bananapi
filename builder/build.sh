@@ -127,6 +127,9 @@ dd if="${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/bootloader/u-boot-sunx
 # ensure that the travis-ci user can access the sd-card image file
 umask 0000
 
+chmod 666 "${BUILD_RESULT_PATH}/filesystem.tar"
+chmod 666 "${BUILD_RESULT_PATH}/bpi-compile.tar.gz"
+
 # compress image
 zip "${BUILD_RESULT_PATH}/${HYPRIOT_IMAGE_NAME}.zip" "/${HYPRIOT_IMAGE_NAME}"
 cd ${BUILD_RESULT_PATH} && sha256sum "${HYPRIOT_IMAGE_NAME}.zip" > "${HYPRIOT_IMAGE_NAME}.zip.sha256" && cd -
