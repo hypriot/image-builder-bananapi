@@ -67,6 +67,7 @@ tar xzf "${ROOTFS_TAR_PATH}" -C "${BUILD_PATH}"
 cp -r ${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/kernel/* ${BUILD_PATH}/boot
 cp -r ${BUILD_RESULT_PATH}/lemaker/build/BananaPi_hwpack/rootfs/* ${BUILD_PATH}
 
+tar czf "${BUILD_RESULT_PATH}/bpi-compile.tar.gz" -C "${BUILD_RESULT_PATH}/lemaker/build/" .
 # modify/add image files directly
 # e.g. root partition resize script
 cp -R ${BUILD_RESULT_PATH}/builder/files/* ${BUILD_PATH}/
@@ -107,16 +108,16 @@ umount -l ${BUILD_PATH}/sys
 # ensure that there are no leftover artifacts in the pseudo filesystems
 rm -rf ${BUILD_PATH}/{dev,sys,proc}/*
 
-tar cf filesystem.tar -C ${BUILD_PATH} .
+tar cf "${BUILD_RESULT_PATH}/filesystem.tar" -C "${BUILD_PATH}" .
 
 ROOT_PARTITION_OFFSET=$(fdisk -l /${HYPRIOT_IMAGE_NAME} | grep ${HYPRIOT_IMAGE_NAME}2 | awk -F " " '{ print $2 }')
 BOOT_PARTITION_OFFSET=$(fdisk -l /${HYPRIOT_IMAGE_NAME} | grep ${HYPRIOT_IMAGE_NAME}1 | awk -F " " '{ print $2 }')
 
 mount -t ext4 -o loop=/dev/loop0,offset=$((ROOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}
-mkdir ${BUILD_PATH}/boot
+mkdir "${BUILD_PATH}/boot"
 mount -t vfat -o loop=/dev/loop1,offset=$((BOOT_PARTITION_OFFSET*512)) "/${HYPRIOT_IMAGE_NAME}" ${BUILD_PATH}/boot
 
-tar xf filesystem.tar -C ${BUILD_PATH}
+tar xf "${BUILD_RESULT_PATH}/filesystem.tar" -C "${BUILD_PATH}"
 
 umount ${BUILD_PATH}/boot
 umount ${BUILD_PATH}
