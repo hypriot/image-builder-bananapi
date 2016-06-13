@@ -17,7 +17,7 @@ BUILD_RESULT_PATH="/workspace"
 # place to build our sd-image
 BUILD_PATH="/build"
 
-ROOTFS_TAR="rootfs-armhf-raspbian-${HYPRIOT_OS_VERSION}.tar.gz"
+ROOTFS_TAR="rootfs-armhf-debian-${HYPRIOT_OS_VERSION}.tar.gz"
 ROOTFS_TAR_PATH="${BUILD_RESULT_PATH}/${ROOTFS_TAR}"
 
 # Show TRAVIS_TAG in travis builds
